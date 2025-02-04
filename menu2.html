@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menú Multinivel Responsive</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .menu-container {
+            background-color: #333;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+
+        .menu-icon {
+            display: none;
+            color: #fff;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+
+        .menu {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: row;
+        }
+
+        .menu li {
+            position: relative;
+        }
+
+        .menu > li {
+            margin-right: 10px;
+        }
+
+        .menu a {
+            text-decoration: none;
+            color: #fff;
+            padding: 10px 15px;
+            display: block;
+        }
+
+        .submenu li {
+            width: 200px;
+        }
+
+        .menu-level-1 {
+            position: absolute;
+            visibility: hidden;
+        }
+
+
+
+
+
+
+        .menu-level-1 {
+            position: absolute;
+            background-color: #444;
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            visibility: hidden;
+            opacity: 0;
+            max-height: 0;
+            overflow: hidden;
+            transform: translateY(-10px);
+            transition:
+                visibility 0s linear 0.3s,
+                opacity 0.3s ease-in-out,
+                transform 0.3s ease-in-out,
+                max-height 0.5s ease-in-out;
+        }
+
+
+        .menu-level-1 li:hover > .menu-level-2 {
+            visibility: visible;
+            opacity: 1;
+            max-height: 300px;
+            transform: translateY(0);
+            transition-delay: 0s;
+        }
+
+
+/*
+        .submenu.level-1 {
+            top: 100%;
+            left: 0;
+        }
+
+        .submenu.level-2 {
+            top: 0;
+            left: 100%;
+        }
+*/
+        .menu li:hover > .submenu,
+        .submenu li:hover > .submenu {
+            visibility: visible;
+            opacity: 1;
+            max-height: 300px;
+            transform: translateY(0);
+            transition-delay: 0s;
+        }
+
+        .user-icon {
+            color: #fff;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .user-dropdown {
+            display: none;
+            position: absolute;
+            right: 0;
+            top: 40px;
+            background-color: #444;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .user-dropdown li {
+            width: 150px;
+        }
+
+        .user-dropdown a {
+            padding: 10px;
+            display: block;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .user-dropdown a:hover {
+            background-color: #555;
+        }
+
+        @media (max-width: 768px) {
+            .menu-icon {
+                display: block;
+            }
+
+            .menu {
+                flex-direction: column;
+                display: none;
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 100%;
+                height: 100vh;
+                background-color: rgba(0, 0, 0, 0.9);
+                padding-top: 50px;
+                transition: right 0.3s ease-in-out;
+            }
+
+            .menu.active {
+                right: 0;
+            }
+
+            .menu li {
+                width: 100%;
+                text-align: center;
+            }
+
+            .submenu {
+                position: static;
+                background-color: #333;
+            }
+
+            .submenu li {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="menu-container" id="menuContainer">
+        <div class="menu-icon" id="menuIcon">
+            <i class="fas fa-bars" id="menuIcon"></i>
+        </div>
+
+        <ul class="menu" id="menu">
+            <li><a href="#">Inicio</a></li>
+            <li><a href="#">Servicios <i class="fas fa-caret-down icon"></i></a>
+                <ul class="menu-level-1">
+                    <li><a href="#">Diseño Web</a></li>
+                    <li><a href="#">Desarrollo de Software</a></li>
+                    <li><a href="#">Marketing Digital <i class="fas fa-caret-right icon"></i></a>
+                        <ul class="submenu level-2">
+                            <li><a href="#">SEO</a></li>
+                            <li><a href="#">Publicidad en Redes Sociales</a></li>
+                            <li><a href="#">Email Marketing</a></li>
+                            <li><a href="#">Content Marketing</a></li>
+                            <li><a href="#">Analytics</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Desarrollo Móvil</a></li>
+                    <li><a href="#">Cloud Computing</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Productos <i class="fas fa-caret-down icon"></i></a>
+                <ul class="menu-level-1">
+                    <li><a href="#">Software <i class="fas fa-caret-right icon"></i></a>
+                        <ul class="menu-level-2">
+                            <li><a href="#">ERP</a></li>
+                            <li><a href="#">CRM</a></li>
+                            <li><a href="#">Sistemas de Gestión</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Hardware</a></li>
+                    <li><a href="#">Soluciones en la Nube</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Nosotros <i class="fas fa-caret-down icon"></i></a>
+                <ul class="menu-level-1">
+                    <li><a href="#">Historia</a></li>
+                    <li><a href="#">Equipo</a></li>
+                    <li><a href="#">Socios</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Enlaces <i class="fas fa-caret-down icon"></i></a>
+                <ul class="menu-level-1">
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Repositorio</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Contacto <i class="fas fa-caret-down icon"></i></a>
+                <ul class="menu-level-1">
+                    <li><a href="#">Oficinas</a></li>
+                    <li><a href="#">Soporte</a></li>
+                    <li><a href="#">Redes Sociales</a></li>
+                </ul>
+            </li>
+        </ul>
+
+        <div class="menu-user">
+            <i class="fas fa-user user-icon" id="userIcon"></i>
+        </div>
+
+        <ul class="user-dropdown" id="userDropdown">
+            <li><a href="#">Perfil</a></li>
+            <li><a href="#">Configuración</a></li>
+            <li><a href="#">Cerrar sesión</a></li>
+        </ul>
+    </div>
+
+    <div class="menu-mobile" id="menuMobile"></div>
+
+    <script>
+
+        /*
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.getElementById('menuToggle');
+            const menu = document.getElementById('menu');
+            const userIcon = document.getElementById('userIcon');
+            const userDropdown = document.getElementById('userDropdown');
+
+            menuToggle.addEventListener('click', function() {
+                menu.classList.toggle('active');
+            });
+
+            userIcon.addEventListener('click', function() {
+                userDropdown.style.display = userDropdown.style.display === 'block' ? 'none' : 'block';
+            });
+
+            document.addEventListener('click', function(event) {
+                if (!userIcon.contains(event.target) && !userDropdown.contains(event.target)) {
+                    userDropdown.style.display = 'none';
+                }
+            });
+        });
+
+        */
+    </script>
+</body>
+</html>

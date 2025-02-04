@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animación de Movimiento de Izquierda a Derecha</title>
+    <style>
+        #miDiv {
+            width: 200px;
+            height: 100px;
+            background-color: lightcoral;
+            position: relative;
+            opacity: 0; /* Inicialmente invisible */
+        }
+
+        button {
+            margin: 10px;
+            padding: 10px;
+            background-color: #008CBA;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #005f73;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Animación de Movimiento de Izquierda a Derecha</h2>
+
+    <button onclick="moverDiv()">Mover Div de Izquierda a Derecha</button>
+    <div id="miDiv">¡Hola Mundo!</div>
+
+    <script>
+        function moverDiv() {
+            let div = document.getElementById("miDiv");
+            div.animate([
+                { opacity: 0, transform: "translateX(-100%)" }, // Estado inicial
+                { opacity: 1, transform: "translateX(0)" }      // Estado final
+            ], {
+                duration: 200   , // Duración de la animación
+                easing: "ease-out", // Transición suave
+                fill: "forwards"    // Mantener el estado final
+            });
+        }
+    </script>
+
+</body>
+</html>
