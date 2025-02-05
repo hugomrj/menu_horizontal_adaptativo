@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Menú de Navegación</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
     <style>
         * {
             margin: 0;
@@ -23,7 +24,8 @@
             background-color: #333;
             padding: 1.2rem;            
             display: flex;
-            align-items: center; /* Centra el contenido verticalmente */            
+            align-items: center;
+            justify-content: space-between;
         }
 
         nav {
@@ -37,6 +39,34 @@
             display: flex;
         }
 
+        .user-icon {
+            color: #fff;            
+            cursor: pointer;
+        }
+
+
+        .user-dropdown {
+            list-style-type: none;
+            padding: 0;
+            display: block;
+            position: absolute;
+            background-color: #fff;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+            width: 160px;
+            left: 0;
+            display: none;
+        }
+
+        .menu-user:hover + .user-dropdown {
+            display: block;
+        }
+
+        .menu-user {
+            cursor: pointer;
+        }
+
+
+
         main {
             flex: 1;
             padding: 20px;
@@ -47,89 +77,37 @@
             padding: 10px;
         }
 
-        .nav-right > div {
-            display: flex;
-            flex-direction: column; /* Esto organiza los elementos en columna */
-            align-items: flex-start; /* Puedes ajustarlo según necesites */
-        }
-
-        .user-icon {
-            color: #fff;    
-            cursor: pointer;
-        }
-
-        .user-dropdown {
-            list-style-type: none;
-            padding: 0;
-            display: none;
-            position: absolute; /* Esto hace que el menú se desplace fuera de su contenedor */
-            background-color: #fff;
-            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-            width: 160px;
-        }
-
-        .user-dropdown li {
-            margin: 5px 0;
-        }
-
-        .user-dropdown a {
-            text-decoration: none;
-            color: black;
-            display: block;
-            padding: 8px;
-        }
-
-        .menu-user:hover + .user-dropdown {
-            display: block;
-        }
-
-.user-dropdown {
-    list-style-type: none;
-    padding: 0;
-    display: none;
-    position: absolute; /* Posición absoluta dentro de nav-right */
-    background-color: #fff;
-    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-    width: 160px;
-    /*margin-top: 10px; */
-    left: 0; /* Alinea el menú a la izquierda del contenedor */
-}
-
-
 
     </style>
 </head>
 <body>
 
-    <header>
+    <header id="header">
         <nav>
             <div class="nav-left">
                 <div>Izquierda</div>
             </div>
             <div class="nav-right">
-                <div>
-                    <div class="menu-user">
-                        <i class="fas fa-user user-icon" id="userIcon"></i>
-                    </div>
-            
-                    <ul class="user-dropdown" id="userDropdown">
-                        <li><a href="#">Perfil</a></li>
-                        <li><a href="#">Configuración</a></li>
-                        <li><a href="#">Cerrar sesión</a></li>
-                    </ul>
+                <div class="menu-user">
+                    <i class="fas fa-user user-icon" id="userIcon"></i>
                 </div>
+                <ul class="user-dropdown" id="userDropdown">
+                    <li><a href="#">Perfil</a></li>
+                    <li><a href="#">Configuración</a></li>
+                    <li><a href="#">Cerrar sesión</a></li>
+                </ul>
             </div>
         </nav>
     </header>
 
     <main>
         <section>           
-            <p>main</p>
+            <p>Contenido principal</p>
         </section>
     </main>
 
     <footer>
-        <p>footer</p>
+        <p>Footer</p>
     </footer>
 
     <script>
@@ -143,7 +121,6 @@
             userDropdown.style.marginTop = headerHeight + 'px';
         };
     </script>
-
 
 </body>
 </html>
